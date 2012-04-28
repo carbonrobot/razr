@@ -1,0 +1,58 @@
+﻿/*----------------------------------------------------------
+Razr theme
+----------------------------------------------------------*/
+@bgcolor: rgba(255, 255, 255, .95);
+@textcolor: #4d4d4d;
+@linkcolor: #cc0000;
+@bordercolor: #e2e2e2;
+
+body { background-color: @bgcolor; font-size: .85em; font-family: "Lato", Sans-Serif; margin: 0; padding: 0; color: @textcolor; }
+
+a:link { color: @linkcolor; }
+a:visited { color: @linkcolor; }
+a:hover { color: @linkcolor; text-decoration: underline; }
+a:active { color: @linkcolor; text-decoration: underline; }
+
+p, ul { margin-bottom: 20px; line-height: 1.6em; }
+
+header, footer, nav, section { display: block; }
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 { font-size: 1.5em; color: #000; }
+h1 { font-size: 2em; padding-bottom: 0; margin-bottom: 0; }
+h2 { padding: 0 0 10px 0; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.1em; }
+h5, h6 { font-size: 1em; }
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+
+
+.page { width: 100%; margin-left: auto; margin-right: auto; }
+
+#sidebar {
+    width: 258px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    min-height: 690px;
+    z-index: 0;
+}
+#sidebar img.icon { width: 150px; height: 150px; margin-top: 10px; margin-left: 54px; }
+    
+#main {
+    margin-left: 260px;
+    border-left: 1px solid @bordercolor;
+    min-width: 710px;
+    min-height: 800px;
+    background-color: @bgcolor;
+    position: relative;
+    z-index: 1;
+}
+    
+#footer {}
