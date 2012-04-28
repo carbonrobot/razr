@@ -1,6 +1,13 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+# build folders #
+#################
 bin
 obj
 
-# mstest test results
+# mstest test results #
+#######################
 TestResults
+
+# user specific solution files #
+################################
+*.suo
+*.user
