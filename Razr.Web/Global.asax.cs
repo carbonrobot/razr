@@ -35,6 +35,9 @@ namespace Razr.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            
+            // production
+            System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(null);
         }
     }
 }
