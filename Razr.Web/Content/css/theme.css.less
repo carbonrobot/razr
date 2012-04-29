@@ -2,14 +2,16 @@
 Razr theme
 ----------------------------------------------------------*/
 @bgcolor: rgba(255, 255, 255, .95);
+@titlecolor: #3a3a3a;
 @textcolor: #4d4d4d;
 @linkcolor: #cc0000;
 @bordercolor: #e2e2e2;
+@dimtextcolor: #585C60;
 
-body { background-color: @bgcolor; font-size: .85em; font-family: "Lato", Sans-Serif; margin: 0; padding: 0; color: @textcolor; }
+body { background-color: @bgcolor; font-size: 14px; font-family: sans-serif; line-height: 1.231; margin: 0; padding: 0; color: @textcolor; }
 
-a:link { color: @linkcolor; }
-a:visited { color: @linkcolor; }
+a { color: @linkcolor; text-decoration: none; }
+a:visited { color: @linkcolor; text-indent: none; }
 a:hover { color: @linkcolor; text-decoration: underline; }
 a:active { color: @linkcolor; text-decoration: underline; }
 
@@ -19,18 +21,10 @@ header, footer, nav, section { display: block; }
 
 /* HEADINGS   
 ----------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6 { font-size: 1.5em; color: #000; }
-h1 { font-size: 2em; padding-bottom: 0; margin-bottom: 0; }
-h2 { padding: 0 0 10px 0; }
-h3 { font-size: 1.2em; }
-h4 { font-size: 1.1em; }
-h5, h6 { font-size: 1em; }
+h1, h2, h3, h4, h5, h6 { color: @titlecolor; margin-top: 30px; }
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-
-
-
 .page { width: 100%; margin-left: auto; margin-right: auto; }
 
 #sidebar {
@@ -44,6 +38,8 @@ h5, h6 { font-size: 1em; }
     z-index: 0;
 }
 #sidebar img.icon { width: 150px; height: 150px; margin-top: 10px; margin-left: 54px; }
+#sidebar h1 { padding-left: 40px; margin-bottom: 0px; }
+#sidebar h2 { padding-left: 40px; margin: 0; font-weight: 100; font-size: 16px; color: @dimtextcolor; }
     
 #main {
     margin-left: 260px;
@@ -54,5 +50,23 @@ h5, h6 { font-size: 1em; }
     position: relative;
     z-index: 1;
 }
-    
+
+#main header { padding: 40px 50px; padding-left: 50px; }
+#main header label { font-weight: bold; }
+#main article { padding: 40px 50px; border-top: 1px solid @bordercolor; }
+#main article h2 {
+    margin-top: 20px;
+    margin-bottom: 7px;
+}
+#main article h2 a  { color: @titlecolor; }
+#main article span.date { display: inline-block; width: 165px; font-size: 0.95em; color: @dimtextcolor; }
+#main article span.tags { display: inline-block; margin-left: 85px; font-size: 0.95em; color: @dimtextcolor; }
+#main article p { 
+    font-size: 15px;
+    line-height: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+  
 #footer {}

@@ -11,21 +11,12 @@
     <div class="page">
         <section id="sidebar">
             <img src="@Url.Content("~/content/images/icon.png")" alt="" class="icon" />
+            <h1>@ViewBag.Title</h1>
+            <h2>@ViewBag.Subtitle</h2>
         </section>
         <section id="main">
             <header>
-                <div id="title">
-                    <h1>My MVC Application</h1>
-                </div>
-                <div id="logindisplay">
-                    @Html.Partial("_LogOnPartial")
-                </div>
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                    </ul>
-                </nav>
+                <label>@DateTime.Now.ToString("MMMM dd, yyyy").ToUpper()</label>
             </header>
             @RenderBody()
         </section>

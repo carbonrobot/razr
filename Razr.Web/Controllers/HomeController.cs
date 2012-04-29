@@ -10,6 +10,8 @@ namespace Razr.Web.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "carbonatethis";
+            ViewBag.Subtitle = "simple, but effective.";
             return View();
         }
 
