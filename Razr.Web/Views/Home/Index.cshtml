@@ -1,16 +1,28 @@
-﻿<article>
-    <h2><a href="?post=12">Voltstats.net</a></h2>
-    <span class="date">APRIL 27, 2012 11:35 AM</span>
-    <span class="tags"><a href="?tag=chevy">chevy</a>, <a href="?tag=chevy">hybrid</a></span>
-    <p>
-        Mike Rosack has written a very interesting application over at voltstats.net. His web app gathers data from users Onstar accounts and tracks the real world statistics of many Chevy Volts (close to 1000 vehicles have been registered). 
-    </p>
-</article>
-<article>
-    <h2><a href="?post=11">Komodo IDE 7 tips &amp; tricks #31</a></h2>
-    <span class="date">APRIL 26, 2012 9:31 AM</span>
-    <span class="tags"><a href="?tag=chevy">komodo</a>, <a href="?tag=chevy">ide</a>, <a href="?tag=chevy">php</a></span>
-    <p>
-        One of the best tricks I have learned in Komodo is using the magic help by linking the keywords of a language to the doc website. Although Komodo 7 has many built in already, its quite simple to add your own language or extend the documentation.
-    </p>
-</article>
+﻿<div class="page">
+<section id="sidebar">
+    <img src="@Url.Content("~/content/images/icon.png")" alt="" class="icon" />
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Subtitle</h2>
+</section>
+<section id="main">
+    <header>
+        <label>@DateTime.Now.ToString("MMMM dd, yyyy").ToUpper()</label>
+    </header>
+    <article>
+        <h2><a href="?post=12">Voltstats.net</a></h2>
+        <span class="date">APRIL 27, 2012 11:35 AM</span>
+        <span class="tags"><a href="?tag=chevy">chevy</a>, <a href="?tag=chevy">hybrid</a></span>
+        @Html.Raw(ViewBag.Message)
+    </article>
+    <article>
+        <h2><a href="?post=11">Komodo IDE 7 tips &amp; tricks #31</a></h2>
+        <span class="date">APRIL 26, 2012 9:31 AM</span>
+        <span class="tags"><a href="?tag=chevy">komodo</a>, <a href="?tag=chevy">ide</a>, <a href="?tag=chevy">php</a></span>
+        <p>
+            One of the best tricks I have learned in Komodo is using the magic help by linking the keywords of a language to the doc website. Although Komodo 7 has many built in already, its quite simple to add your own language or extend the documentation.
+        </p>
+    </article>
+</section>
+<footer>
+</footer>
+</div>

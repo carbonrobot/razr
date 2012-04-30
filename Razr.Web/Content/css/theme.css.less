@@ -8,20 +8,21 @@ Razr theme
 @bordercolor: #e2e2e2;
 @dimtextcolor: #585C60;
 
-body { background-color: @bgcolor; font-size: 14px; font-family: sans-serif; line-height: 1.231; margin: 0; padding: 0; color: @textcolor; }
+body { background-color: @bgcolor; font-size: 14px; font-family: 'Lato', sans-serif; line-height: 1.231; margin: 0; padding: 0; color: @textcolor; }
 
-a { color: @linkcolor; text-decoration: none; }
-a:visited { color: @linkcolor; text-indent: none; }
+a { color: @textcolor; text-decoration: none; }
+a:visited { color: @textcolor; text-indent: none; }
 a:hover { color: @linkcolor; text-decoration: underline; }
 a:active { color: @linkcolor; text-decoration: underline; }
 
 p, ul { margin-bottom: 20px; line-height: 1.6em; }
+ul { list-style-type: none; }
 
 header, footer, nav, section { display: block; }
 
 /* HEADINGS   
 ----------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6 { color: @titlecolor; margin-top: 30px; }
+h1, h2, h3, h4, h5, h6 { color: @titlecolor; margin-top: 23px; line-height: 1.3; font-weight: 900; }
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
@@ -70,3 +71,23 @@ h1, h2, h3, h4, h5, h6 { color: @titlecolor; margin-top: 30px; }
 }
   
 #footer {}
+
+#admin { width: 808px; margin: 0 auto; }
+#admin div.col { width: 360px; padding: 10px 20px; float: left; }
+#admin div.col ul li { border-bottom: 1px solid #DDD;
+padding: 15px 0;
+position: relative; }
+
+#admin div.col ul li h3 { margin: 0;
+font-size: 16px;
+max-width: 100%;
+text-overflow: ellipsis;
+overflow: hidden; }
+
+#admin #published h3 a {
+color: #999;
+}
+
+#drafts { border: 4px solid #000; border-top: none; }
+#drafts h1 { font-size: 35px; }
+#published h1 { color: #999; }

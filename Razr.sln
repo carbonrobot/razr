@@ -9,7 +9,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razr.Services", "Razr.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razr.Repository", "Razr.Repository\Razr.Repository.csproj", "{ED118A9A-90FF-4841-8CAD-F27F045F49AC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{B1B667F4-FEE9-42AA-8597-429DEAC886B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razr.Tests", "Razr.Tests\Razr.Tests.csproj", "{371AA66E-B97E-4558-A594-7D3172BF57B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B88991EB-0D83-4EC3-A531-D2B9D99F1898}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		Razr.vsmdi = Razr.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Razr.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -31,9 +45,17 @@ Global
 		{ED118A9A-90FF-4841-8CAD-F27F045F49AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED118A9A-90FF-4841-8CAD-F27F045F49AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED118A9A-90FF-4841-8CAD-F27F045F49AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371AA66E-B97E-4558-A594-7D3172BF57B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371AA66E-B97E-4558-A594-7D3172BF57B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371AA66E-B97E-4558-A594-7D3172BF57B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371AA66E-B97E-4558-A594-7D3172BF57B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{371AA66E-B97E-4558-A594-7D3172BF57B7} = {B1B667F4-FEE9-42AA-8597-429DEAC886B5}
+		{B88991EB-0D83-4EC3-A531-D2B9D99F1898} = {B1B667F4-FEE9-42AA-8597-429DEAC886B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35

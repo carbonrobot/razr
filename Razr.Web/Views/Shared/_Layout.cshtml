@@ -3,26 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
-    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link href="@Url.Content("~/content/css/normalize.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/content/css/theme.css.less")" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet" type="text/css">
+    <!--<link href="@Url.Content("~/content/css/normalize.css")" rel="stylesheet" type="text/css" />-->
+    <link href="@Url.Content("~/content/css/style.css.less")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="page">
-        <section id="sidebar">
-            <img src="@Url.Content("~/content/images/icon.png")" alt="" class="icon" />
-            <h1>@ViewBag.Title</h1>
-            <h2>@ViewBag.Subtitle</h2>
-        </section>
-        <section id="main">
-            <header>
-                <label>@DateTime.Now.ToString("MMMM dd, yyyy").ToUpper()</label>
-            </header>
-            @RenderBody()
-        </section>
-        <footer>
-        </footer>
-    </div>
+    @RenderBody()
     <script src="@Url.Content("~/scripts/jquery-1.7.2.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
 </body>

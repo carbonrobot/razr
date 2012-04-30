@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>7b910cbb-0d03-449d-be18-f666c589d040</ProjectGuid>
+    <ProjectGuid>{371AA66E-B97E-4558-A594-7D3172BF57B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Razr.Tests</RootNamespace>
@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -44,7 +45,31 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\PostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Razr.Models\Razr.Models.csproj">
+      <Project>{910C9C5C-476F-4168-9358-DB3F97F971E5}</Project>
+      <Name>Razr.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Razr.Repository\Razr.Repository.csproj">
+      <Project>{ED118A9A-90FF-4841-8CAD-F27F045F49AC}</Project>
+      <Name>Razr.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Razr.Services\Razr.Services.csproj">
+      <Project>{EC1627A1-F342-48B8-9755-3828C70FC150}</Project>
+      <Name>Razr.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Razr.Web\Razr.Web.csproj">
+      <Project>{99C9EF19-FCFD-49F2-A7BB-7CCDB5827587}</Project>
+      <Name>Razr.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="Services\" />
+    <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
