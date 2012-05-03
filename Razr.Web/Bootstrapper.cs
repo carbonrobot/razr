@@ -19,6 +19,7 @@ namespace Razr.Web
 
             // register all your components with the container here
             container.RegisterType<Razr.Services.IContext, Razr.Repository.DataContext>(new PerRequestLifetimeManager());
+            container.RegisterType<Razr.Services.ILogger, Razr.Web.Util.Logger>(new PerRequestLifetimeManager());
             container.RegisterType<Razr.Services.ModelService>(new PerRequestLifetimeManager());
             
             container.RegisterControllers();

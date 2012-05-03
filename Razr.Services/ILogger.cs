@@ -7,5 +7,6 @@ namespace Razr.Services
 {
     public interface ILogger
     {
+        void Error(Exception exception);
     }
 }

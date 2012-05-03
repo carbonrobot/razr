@@ -1,93 +1,70 @@
-﻿/*----------------------------------------------------------
-Razr theme
-----------------------------------------------------------*/
-@bgcolor: rgba(255, 255, 255, .95);
-@titlecolor: #3a3a3a;
-@textcolor: #4d4d4d;
-@linkcolor: #cc0000;
-@bordercolor: #e2e2e2;
-@dimtextcolor: #585C60;
+﻿body { background: #fff; color: #222; }
+body, textarea, pre, input { font-family: 'Lato', Helvetica, sans-serif; }
+a, a:visited a:active { color: #000; text-decoration: none; border-bottom: 1px solid #ddd; }
+a:hover { color: #cc0000; text-decoration: none; }
 
-body { background-color: @bgcolor; font-size: 14px; font-family: 'Lato', sans-serif; line-height: 1.231; margin: 0; padding: 0; color: @textcolor; }
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
 
-a { color: @textcolor; text-decoration: none; }
-a:visited { color: @textcolor; text-indent: none; }
-a:hover { color: @linkcolor; text-decoration: underline; }
-a:active { color: @linkcolor; text-decoration: underline; }
+#sidebar { padding-left: 20px; }
+#sidebar h2 { margin-top: 10px; }
+#sidebar span { font-size: 16px; }
 
-p, ul { margin-bottom: 20px; line-height: 1.6em; }
-ul { list-style-type: none; }
+#content { border-left: 1px solid #ddd; min-height: 768px; }
+#content header { padding: 26px 50px; border-bottom: 1px solid #ddd; }
+#content header span { color: #999; font-size: 16px; }
 
-header, footer, nav, section { display: block; }
+#posts {  }
+#posts article { padding: 26px 0 40px 50px; border-bottom: 1px solid #ddd; position: relative; font-family: Sans-Serif; }
+#posts article h2 { margin-top: 23px; margin-bottom: 23px; font-size: 35px; font-family: 'Lato'; }
+#posts article .subline { margin-bottom: 15px; font-family: 'Lato'; }
+#posts article p { color: #555; }
+#posts article .date { width: 175px; font-size: 13px; color: #555; }
+#posts article .tags { display: inline-block; zoom: 1; *display: inline; margin-left: 50px; font-size: 11px; }
+#posts article .tags a { font-family: sans-serif; }
 
-/* HEADINGS   
-----------------------------------------------------------*/
-h1, h2, h3, h4, h5, h6 { color: @titlecolor; margin-top: 23px; line-height: 1.3; font-weight: 900; }
+#publish-bar { position: fixed; bottom: 0; left: 0; background: #222; color: #fff; width: 100%; text-align: center; padding: 15px 0 15px; }
+#publish-bar .contain { margin: 0 auto; width: 600px; }
+#publish-bar input[type=text] { border: none; border-bottom: 1px solid #333; padding: 2px; width: 220px; font-size: 12px; color: #999; }
+#publish-bar .menu.active { background: #fff; color: #000; }
+#publish-bar .sub-menu { margin: 0; background: #222; padding: 20px; position: absolute; bottom: 0; left: 60px; visibility: hidden; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#publish-bar .sub-menu.visible { visibility: visible; }
+#publish-bar .sub-menu li { margin: 0 0 15px 0; }
+#publish-bar input[type=submit], #publish-bar a, .button { display: inline-block; background: #000; padding: 8px 12px; font-weight: bold; border: none; color: #fff; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#publish-bar input[type=submit]:hover, #publish-bar a:hover, .col h1 a:hover, .col h2 a:hover, .button:hover, .button.secondary:hover { background: #cc0000; color: #fff; }
 
-/* PRIMARY LAYOUT ELEMENTS   
-----------------------------------------------------------*/
-.page { width: 100%; margin-left: auto; margin-right: auto; }
+#admin { width: 808px; margin: 0 auto; position: relative; }
+#admin #save-button.saved { color: #999; }
+#admin #save-button.saved:hover { cursor: normal; }
+#admin #drafts { float: left; border: 4px solid #000; border-top: none; background: #fff; margin: 0 0 20px 0; padding-top: 10px; }
+#admin #drafts h1 { font-size: 35px; margin-top: 23px; }
+#admin #drafts form { margin: 20px 0 20px -20px; padding: 0 0 0 20px; border-left: 4px solid lightblue; }
+#admin #drafts #title { width: 350px; font-size: 16px; margin: 0; border: none; border-bottom: 1px solid #ddd; box-shadow: none; -webkit-box-shadow: none; }
+#admin #published { float: right; }
+#admin #published h2 { color: #999; margin-top: 16px; }
+#admin #published h2 a { margin-top: -2px; }
+#admin #published h3 a { color: #999; }
 
-#sidebar {
-    width: 258px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: auto;
-    min-height: 690px;
-    z-index: 0;
-}
-#sidebar img.icon { width: 150px; height: 150px; margin-top: 10px; margin-left: 54px; }
-#sidebar h1 { padding-left: 40px; margin-bottom: 0px; }
-#sidebar h2 { padding-left: 40px; margin: 0; font-weight: 100; font-size: 16px; color: @dimtextcolor; }
-    
-#main {
-    margin-left: 260px;
-    border-left: 1px solid @bordercolor;
-    min-width: 710px;
-    min-height: 800px;
-    background-color: @bgcolor;
-    position: relative;
-    z-index: 1;
-}
+#admin .col h1, #admin .col h2 { position: relative; text-transform: uppercase; }
+#admin .col h1 a, #admin .col h2 a { position: absolute; top: 0; right: 0; font-size: 12px; padding: 2px 10px; line-height: 2.7em; margin: 5px 0 0; }
+#admin .col { width: 360px; padding: 20px; }
+#admin .col h2 a { background: #999; }
+#admin .col h2 a:hover { background: #cc0000; }
+#admin .col ul { padding: 0; }
+#admin .col ul li { border-bottom: 1px solid #ddd; padding: 15px 0; position: relative; }
+#admin .col ul li:hover .links { visibility: visible; }
+#admin .col ul li .links { position: absolute; right: 0; top: 14px; background: #fff; padding: 1px 8px; visibility: hidden; }
+#admin .col ul li .links a { color: #999; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#admin .col ul li .links a:hover { color: #cc0000; }
+#admin .col ul li h3 { margin: 0; font-size: 16px; max-width: 100%; text-overflow: ellipsis; overflow: hidden; }
+#admin .col ul li h3 a { border: none; }
 
-#main header { padding: 40px 50px; padding-left: 50px; }
-#main header label { font-weight: bold; }
-#main article { padding: 40px 50px; border-top: 1px solid @bordercolor; }
-#main article h2 {
-    margin-top: 20px;
-    margin-bottom: 7px;
-}
-#main article h2 a  { color: @titlecolor; }
-#main article span.date { display: inline-block; width: 165px; font-size: 0.95em; color: @dimtextcolor; }
-#main article span.tags { display: inline-block; margin-left: 85px; font-size: 0.95em; color: @dimtextcolor; }
-#main article p { 
-    font-size: 15px;
-    line-height: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: 400;
-}
-  
-#footer {}
+#editor { margin-top: 10px; }
+#editor textarea { min-height: 480px; width: 925px; padding: 15px; border: none; font-size: 16px; }
+#editor input { display: block; width: 925px; padding: 15px; height: auto; border: none; border-color: transparent; }
+#editor #Post_Title { font-size: 35px; font-weight: 900; }
+#editor #Post_Tags { font-size: 16px; }
 
-#admin { width: 808px; margin: 0 auto; }
-#admin div.col { width: 360px; padding: 10px 20px; float: left; }
-#admin div.col ul li { border-bottom: 1px solid #DDD;
-padding: 15px 0;
-position: relative; }
-
-#admin div.col ul li h3 { margin: 0;
-font-size: 16px;
-max-width: 100%;
-text-overflow: ellipsis;
-overflow: hidden; }
-
-#admin #published h3 a {
-color: #999;
-}
-
-#drafts { border: 4px solid #000; border-top: none; }
-#drafts h1 { font-size: 35px; }
-#published h1 { color: #999; }
+/* OVERRIDES */
+.alert { padding-right: 14px; }

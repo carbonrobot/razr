@@ -14,7 +14,7 @@ namespace Razr.Tests.Models
         public void CanCreateNewPosts()
         {
             var p = new Post();
-            p.Summary = "New post";
+            p.Title = "New post";
             p.Body = "I am always dancing in the moonlight";
         }
     }

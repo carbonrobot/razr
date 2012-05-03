@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Razr.Models;
+using Razr.Web.Models;
 
 namespace Razr.Web.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         
-        // GET: /Admin/
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
-        }
+            ViewBag.Title = "admin | carbonatethis";
 
+            var response = service.List<Post>();
+            if (response.HasError)
+                this.RedirectToError("There was a problem looking up posts.", response.Exception);
+
+            var model = new AdminViewModel()
+            {
+                Posts = response.Result
+            };
+            return View(model);
+        }
+        
     }
 }

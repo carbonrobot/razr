@@ -23,7 +23,7 @@ namespace Razr.Web
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
+                "{controller}/{id}/{action}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
@@ -36,6 +36,9 @@ namespace Razr.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             
+            // unity
+            Bootstrapper.Initialise();
+
             // production
             System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(null);
         }

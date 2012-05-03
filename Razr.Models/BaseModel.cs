@@ -10,5 +10,12 @@ namespace Razr.Models
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ChangedDate { get; set; }
+
+        protected BaseModel()
+        {
+            this.Id = -1;
+            this.CreatedDate = DateTime.Now;
+            this.ChangedDate = DateTime.Now;
+        }
     }
 }
