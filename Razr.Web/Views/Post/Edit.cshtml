@@ -1,0 +1,24 @@
+﻿@model Razr.Web.Models.EditViewModel
+<div class="container">
+    <div class="row">
+        <div id="editor">
+            <form action="/post/@Model.Post.Id/edit" method="post">
+                @Html.HiddenFor(x => x.Post.Id)
+                <input type="text" id="Post_Title" name="Post.Title" placeholder="Start typing a new idea here..." value="@Model.Post.Title" />
+                <input type="text" id="Post_Tags" name="Post.Tags" placeholder="Enter comma separated list of tags" value="@Model.Post.Tags" />
+                <textarea id="Post_Body" name="Post.Body" placeholder="Use markdown to write something interesting" rows="2">@Model.Post.Body</textarea>
+    
+                <div class="right">
+                    <button class="btn">Cancel</button>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+        <div class="alert alert-error" style="text-align: right;">
+            Delete this post.
+            <form action="/post/@Model.Post.Id/delete" method="post" style="display: inline;">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
