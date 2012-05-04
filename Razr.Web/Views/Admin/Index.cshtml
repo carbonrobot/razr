@@ -3,28 +3,38 @@
     <div class="row">
         <div id="admin">
             <div id="drafts" class="col">
-                <h1>DRAFTS</h1>
+                <h1>DRAFTS <a href="/" class="button">NEW DRAFT</a> </h1>
                 <form action="/post/quick" method="post">
-                    <input type="text" id="title" name="title" placeholder="Start typing a new idea here..." />
+                <input type="text" id="title" name="title" placeholder="Start typing a new idea here..." />
                 </form>
                 <ul class="unstyled">
-                @foreach (var post in Model.Drafts)
-                {
-                    <li>
-                        <h3><a href="/post/@post.Id/edit">@post.Title</a></h3>
-                    </li>
-                }
+                    @foreach (var post in Model.Drafts)
+                    {
+                        <li>
+                            <h3><a href="/post/@post.Id/edit">@post.Title</a>
+                                <span class="links"> 
+                                <a href="/post/@post.Id" class="admin-view">view</a> 
+                                <a href="/post/@post.Id/delete" class="admin-delete" rel="nofollow">x</a>
+                                </span>
+                            </h3>
+                        </li>
+                    }
                 </ul>
             </div>
             <div id="published" class="col">
-                <h2>PUBLISHED</h2>
+                <h2>PUBLISHED <a href="/" class="button">HOME</a> </h2>
                 <ul class="unstyled">
-                @foreach (var post in Model.Published)
-                {
-                    <li>
-                        <h3><a href="/post/@post.Id/edit">@post.Title</a></h3>
-                    </li>
-                }
+                    @foreach (var post in Model.Published)
+                    {
+                        <li>
+                            <h3><a href="/post/@post.Id/edit">@post.Title</a>
+                                <span class="links"> 
+                                <a href="/post/@post.Id" class="admin-view">view</a> 
+                                <a href="/post/@post.Id/delete" class="admin-delete" rel="nofollow">x</a>
+                                </span>
+                            </h3>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

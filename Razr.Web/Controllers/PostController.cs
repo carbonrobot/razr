@@ -35,7 +35,7 @@ namespace Razr.Web.Controllers
             this.UpdateModel(entity, "Post");
             var response = service.Save(entity);
 
-            return Redirect("/admin");
+            return this.Redirect("/admin");
         }
 
         [HttpPost] // post/quick/{title}
