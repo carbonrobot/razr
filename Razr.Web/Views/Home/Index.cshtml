@@ -1,16 +1,16 @@
 ﻿@model Razr.Web.Models.HomeViewModel
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div id="sidebar" class="span2">
-            <img src="@Url.Content("~/content/images/icon.png")" alt="" class="icon" />
-            <h2>@ViewBag.Title</h2>
-            <span>@ViewBag.Subtitle</span>
-        </div>
-        <div id="content" class="span10">
-            <header>
-                <span>@DateTime.Now.ToString("MMMM dd, yyyy").ToUpper()</span>
-            </header>
-            <section id="posts">
+<div id="page">
+    <div id="sidebar">
+        <img src="@Url.Content("~/content/images/icon.png")" alt="" class="icon" />
+        <h2>@ViewBag.Title</h2>
+        <span>@ViewBag.Subtitle</span>
+        <span id="poweredby">Powered by <a href="https://github.com/carbonrobot/razr">Razr</a></span>
+    </div>
+    <div id="content">
+        <header>
+            <span>@DateTime.Now.ToString("MMMM dd, yyyy").ToUpper()</span>
+        </header>
+        <section id="posts">
             @foreach (var post in Model.Posts)
             {
                 <article>
@@ -22,13 +22,15 @@
                     @Html.Markdown(post.Body)
                 </article>
             }
-            </section>
-        </div>
+        </section>
     </div>
 </div>
-@helper RenderTags(string tags){
-    if(!string.IsNullOrEmpty(tags)){
-        foreach(var tag in tags.Split(',')){
+@helper RenderTags(string tags)
+    {
+    if (!string.IsNullOrEmpty(tags))
+    {
+        foreach (var tag in tags.Split(','))
+        {
             <a class="label" href="?tag=@tag.Trim()">@tag.Trim()</a>
         }
     }
