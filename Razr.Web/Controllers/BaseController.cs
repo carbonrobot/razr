@@ -20,7 +20,8 @@ namespace Razr.Web.Controllers
 
         public BaseController()
         {
-            
+            ViewBag.SiteName = "carbonatethis";
+            ViewBag.SiteTitle = "simple, but effective.";
         }
 
         /// <summary>

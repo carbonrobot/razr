@@ -22,9 +22,16 @@ namespace Razr.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{id}/{action}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "Operation",
+                "{controller}/{id}/{action}",
+                new { controller = "Post", action = "Index" },
+                new { id = @"\d+" }
+            );
+            
+            routes.MapRoute(
+                "Action", 
+                "{controller}/{action}", 
+                new { controller = "Home", action = "Index" }
             );
 
         }

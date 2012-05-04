@@ -14,7 +14,8 @@ namespace Razr.Web.Controllers
         [HttpGet] // post/{id}
         public ActionResult Index(int id)
         {
-            return View();
+            var entity = service.Get<Post>(id).Result;
+            return View(entity);
         }
 
         [HttpGet] // post/{id}/edit
@@ -42,6 +43,13 @@ namespace Razr.Web.Controllers
         public ActionResult Quick(string title)
         {
             var response = service.CreateQuickDraft(title);
+            return this.Redirect("/admin");
+        }
+
+        [HttpPost] // post/{id}/delete
+        public ActionResult Delete(int id)
+        {
+            var response = service.Delete<Post>(id);
             return this.Redirect("/admin");
         }
 

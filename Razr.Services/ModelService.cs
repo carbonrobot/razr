@@ -166,9 +166,10 @@ namespace Razr.Services
             Func<IList<Post>> func = delegate
             {
                 return this.context.AsQueryable<Post>()
-                    .OrderBy(x => x.CreatedDate)
+                    .Where(x => x.Draft == false)
+                    .OrderByDescending(x => x.CreatedDate)
                     .Skip((page - 1) * pagesize)
-                    .Take(page * pagesize)
+                    .Take(pagesize)
                     .ToList();
             };
             return this.Execute(func);

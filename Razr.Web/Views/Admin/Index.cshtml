@@ -10,11 +10,11 @@
                 <ul class="unstyled">
                     @foreach (var post in Model.Drafts)
                     {
-                        <li>
+                        <li id="post-@post.Id">
                             <h3><a href="/post/@post.Id/edit">@post.Title</a>
                                 <span class="links"> 
                                 <a href="/post/@post.Id" class="admin-view">view</a> 
-                                <a href="/post/@post.Id/delete" class="admin-delete" rel="nofollow">x</a>
+                                <a href="#" class="admin-delete" onclick="deletePost(@post.Id);return false;">x</a>
                                 </span>
                             </h3>
                         </li>
@@ -26,11 +26,11 @@
                 <ul class="unstyled">
                     @foreach (var post in Model.Published)
                     {
-                        <li>
+                        <li id="post-@post.Id">
                             <h3><a href="/post/@post.Id/edit">@post.Title</a>
                                 <span class="links"> 
                                 <a href="/post/@post.Id" class="admin-view">view</a> 
-                                <a href="/post/@post.Id/delete" class="admin-delete" rel="nofollow">x</a>
+                                <a href="#" class="admin-delete" onclick="deletePost(@post.Id);return false;">x</a>
                                 </span>
                             </h3>
                         </li>
@@ -40,3 +40,16 @@
         </div>
     </div>
 </div>
+@section scripts {
+<script type="text/javascript">
+    $(function () {
+        $('#title').focus();
+    });
+
+    function deletePost(id) {
+        $.post('/post/' + id + '/delete', function () {
+            $('#post-' + id).fadeOut();
+        });
+    };
+</script>
+}
