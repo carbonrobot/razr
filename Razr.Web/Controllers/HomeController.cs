@@ -12,9 +12,6 @@ namespace Razr.Web.Controllers
     {
         public ActionResult Index(int page = 1)
         {
-            ViewBag.Title = "carbonatethis";
-            ViewBag.Subtitle = "simple, but effective.";
-
             var response = service.GetRecentPosts(page, 10);
             if (response.HasError)
                 this.RedirectToError("There was a problem looking up posts.", response.Exception);
