@@ -1,0 +1,19 @@
+﻿@model Razr.Models.Post
+<article>
+    <h2><a href="/post/@Model.Id">@Model.Title</a></h2>
+    <div class="subline">
+        <span class="date">@Model.CreatedDate.ToString("MMMM dd, yyyy h:mm tt")</span>
+        <span class="tags">@RenderTags(Model.Tags)</span>
+    </div>
+    @Html.Markdown(Model.Body)
+</article>
+@helper RenderTags(string tags)
+{
+    if (!string.IsNullOrEmpty(tags))
+    {
+        foreach (var tag in tags.Split(','))
+        {
+            <a class="label" href="?tag=@tag.Trim()">@tag.Trim()</a>
+        }
+    }
+}

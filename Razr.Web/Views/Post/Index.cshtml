@@ -1,0 +1,10 @@
+﻿@model Razr.Models.Post
+@{
+    ViewBag.Title = string.Format("{0} | {1}", @Model.Title, ViewBag.SiteName);
+}
+@Html.Partial("_Sidebar")
+<div id="content">
+    <section id="posts">
+        @Html.Partial("_Post", Model)
+    </section>
+</div>
