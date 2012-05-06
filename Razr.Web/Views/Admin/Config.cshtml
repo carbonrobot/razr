@@ -1,0 +1,32 @@
+﻿@model Razr.Web.Models.ConfigViewModel
+@{
+    ViewBag.Title = "Razr Configuration";
+}
+<form action="/admin/config" method="post">
+<div class="control-group">
+    <label class="control-label" for="DisplayName">Name</label>
+    <div class="controls">
+        @Html.TextBoxFor(x => x.DisplayName, new { @class = "input-large" })
+        <p class="help-block">Your Name (shown to the public)</p>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="EmailAddress">Email Address</label>
+    <div class="controls">
+        @Html.TextBoxFor(x => x.EmailAddress, new { @class = "input-large" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="Password">Password</label>
+    <div class="controls">
+        @Html.TextBoxFor(x => x.Password, new { @class = "input-large" })
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="PasswordMatch">Password</label>
+    <div class="controls">
+        @Html.TextBoxFor(x => x.PasswordMatch, new { @class = "input-large" })
+    </div>
+</div>
+<a class="button btn">Continue</a>
+</form>

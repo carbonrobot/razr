@@ -10,9 +10,9 @@ namespace Razr.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(int page = 1, string tag = null)
         {
-            var response = service.GetRecentPosts(page, 10);
+            var response = service.GetRecentPosts(tag, page, 10);
             if (response.HasError)
                 this.RedirectToError("There was a problem looking up posts.", response.Exception);
 

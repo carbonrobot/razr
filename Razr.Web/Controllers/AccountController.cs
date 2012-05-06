@@ -6,22 +6,26 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Razr.Web.Models;
+using Razr.Models;
 
 namespace Razr.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
-        //
-        // GET: /Account/LogOn
-
+        [HttpGet]
         public ActionResult LogOn()
         {
+            // check for existing users, if none exist, assume first setup
+            var response = service.Count<User>();
+            if (response.HasError)
+                return this.RedirectToError("Could not check for user accounts", response.Exception);
+
+            if (response.Result < 1)
+                return this.RedirectToRoute("/admin/config");
+
             return View();
         }
-
-        //
-        // POST: /Account/LogOn
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
@@ -51,9 +55,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/LogOff
-
+        [HttpGet]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();

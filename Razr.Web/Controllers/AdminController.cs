@@ -11,7 +11,7 @@ namespace Razr.Web.Controllers
     public class AdminController : BaseController
     {
         
-        [HttpGet]
+        [HttpGet, Authorize]
         public ActionResult Index()
         {
             ViewBag.Title = "admin | carbonatethis";
@@ -25,6 +25,12 @@ namespace Razr.Web.Controllers
                 Posts = response.Result
             };
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Config()
+        {
+            return View();
         }
         
     }

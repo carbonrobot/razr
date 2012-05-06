@@ -161,16 +161,22 @@ namespace Razr.Services
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        public ServiceResponse<IList<Post>> GetRecentPosts(int page, int pagesize)
+        public ServiceResponse<IList<Post>> GetRecentPosts(string tag, int page, int pagesize)
         {
             Func<IList<Post>> func = delegate
             {
-                return this.context.AsQueryable<Post>()
-                    .Where(x => x.Draft == false)
-                    .OrderByDescending(x => x.CreatedDate)
+                var query = this.context.AsQueryable<Post>()
+                    .Where(x => x.Draft == false);
+                
+                if(!string.IsNullOrEmpty(tag)){
+                    query = query.Where(x => x.Tags.Contains(tag));
+                }
+
+                query = query.OrderByDescending(x => x.CreatedDate)
                     .Skip((page - 1) * pagesize)
-                    .Take(pagesize)
-                    .ToList();
+                    .Take(pagesize);
+
+                return query.ToList();
             };
             return this.Execute(func);
         }

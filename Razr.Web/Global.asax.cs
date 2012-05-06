@@ -47,7 +47,7 @@ namespace Razr.Web
             Bootstrapper.Initialise();
 
             // production
-            System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(null);
+            System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(new Razr.Repository.RazrInitializer());
         }
     }
 }
