@@ -12,6 +12,8 @@ namespace Razr.Models
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
 
+        public Blog Blog { get; internal set; }
+
         public User() { }
     }
 }

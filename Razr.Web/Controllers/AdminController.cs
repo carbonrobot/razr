@@ -32,6 +32,16 @@ namespace Razr.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Config(ConfigViewModel model)
+        {
+            // TODO: all the usual checks
+            var response = service.Configure(model.SiteName, model.SiteTitle, model.DisplayName, model.EmailAddress, model.Password);
+
+            // redirect to admin
+            return this.Redirect("/admin");
+        }
         
     }
 }

@@ -139,6 +139,41 @@ namespace Razr.Services
 
 
         /// <summary>
+        /// Configure a new blog application with a default admin user
+        /// </summary>
+        /// <param name="sitename">The name of the blog</param>
+        /// <param name="title">The title of the blog</param>
+        /// <param name="name">The name of the default user</param>
+        /// <param name="email">The email of the user</param>
+        /// <param name="password">The password</param>
+        /// <returns></returns>
+        public ServiceResponse<bool> Configure(string sitename, string title, string name, string email, string password)
+        {
+            Func<bool> func = delegate
+            {
+                var blog = new Blog()
+                {
+                    SiteName = sitename,
+                    Title = title
+                };
+
+                var salt = DevOne.Security.Cryptography.BCrypt.BCryptHelper.GenerateSalt(12);
+                var hash = DevOne.Security.Cryptography.BCrypt.BCryptHelper.HashPassword(password, salt);
+                var user = new User()
+                {
+                    DisplayName = name,
+                    Email = email,
+                    PasswordHash = salt,
+                    PasswordSalt = hash
+                };
+                blog.AddUser(user);
+
+                return context.Save(blog).Id > 0;
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
         /// Creates a quick draft of an idea
         /// </summary>
         /// <param name="title">The name of the brilliant idea</param>
@@ -152,6 +187,31 @@ namespace Razr.Services
 
                 var entity = new Post() { Title = title };
                 return context.Save(entity);
+            };
+            return this.Execute(func);
+        }
+
+        public ServiceResponse<User> Login(string email, string password)
+        {
+            Func<User> func = delegate
+            {
+                var user = context.AsQueryable<User>()
+                    .Where(x => x.Email == email)
+                    .SingleOrDefault();
+
+                // TODO: replace with authentication exception
+                if (user == null)
+                    throw new ArgumentException("Email address not found");
+
+                var hash = DevOne.Security.Cryptography.BCrypt.BCryptHelper.HashPassword(password, user.PasswordSalt);
+                if (hash == user.PasswordHash)
+                {
+                    return user;
+                }
+                else
+                {
+                    throw new ArgumentException("Password incorrect");
+                }
             };
             return this.Execute(func);
         }

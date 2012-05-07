@@ -12,5 +12,7 @@ namespace Razr.Web.Models
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public string PasswordMatch { get; set; }
+        public string SiteName { get; set; }
+        public string SiteTitle { get; set; }
     }
 }
