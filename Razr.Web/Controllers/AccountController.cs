@@ -30,6 +30,20 @@ namespace Razr.Web.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
+            var response = service.Login(model.UserName, model.Password);
+            if (response.HasError)
+                this.RedirectToError("Problem logging in", response.Exception);
+
+            var user = response.Result;
+            if (user != null)
+            {
+                FormsAuthentication.SetAuthCookie(model.UserName, true);
+                return this.Redirect("/admin");
+            }
+
+            return View();
+
+            /*
             if (ModelState.IsValid)
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
@@ -53,6 +67,7 @@ namespace Razr.Web.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+             * */
         }
 
         [HttpGet]

@@ -7,7 +7,23 @@
     <form action="/admin/config" method="post" class="form-horizontal">
     <fieldset class="well">
         <div class="control-group">
-            <label class="control-label" for="DisplayName">Name</label>
+            <label class="control-label" for="DisplayName">Blog Name</label>
+            <div class="controls">
+                @Html.TextBoxFor(x => x.SiteName, new { @class = "input-large" })
+                <p class="help-block">
+                    The name of your blog</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="DisplayName">Blog Title</label>
+            <div class="controls">
+                @Html.TextBoxFor(x => x.SiteTitle, new { @class = "input-large" })
+                <p class="help-block">
+                    Something short and witty that describes your blog</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="DisplayName">Admin Name</label>
             <div class="controls">
                 @Html.TextBoxFor(x => x.DisplayName, new { @class = "input-large" })
                 <p class="help-block">
@@ -23,17 +39,17 @@
         <div class="control-group">
             <label class="control-label" for="Password">Password</label>
             <div class="controls">
-                @Html.TextBoxFor(x => x.Password, new { @class = "input-large" })
+                @Html.PasswordFor(x => x.Password, new { @class = "input-large" })
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="PasswordMatch">Password</label>
+            <label class="control-label" for="PasswordMatch">Retype Password</label>
             <div class="controls">
-                @Html.TextBoxFor(x => x.PasswordMatch, new { @class = "input-large" })
+                @Html.PasswordFor(x => x.PasswordMatch, new { @class = "input-large" })
             </div>
         </div>
         <div class="right">
-        <a class="button btn">Continue</a>
+            <a class="button btn" onclick="$(this).closest('form').submit();return false;">Continue</a>
         </div>
     </fieldset>
     </form>

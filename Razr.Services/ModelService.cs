@@ -163,8 +163,8 @@ namespace Razr.Services
                 {
                     DisplayName = name,
                     Email = email,
-                    PasswordHash = salt,
-                    PasswordSalt = hash
+                    PasswordHash = hash,
+                    PasswordSalt = salt
                 };
                 blog.AddUser(user);
 
