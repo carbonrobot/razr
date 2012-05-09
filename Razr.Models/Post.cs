@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Razr.Models
+﻿namespace Razr.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    /// <summary>
+    /// A blog post
+    /// </summary>
     public class Post : BaseModel
     {
         /// <summary>
@@ -34,5 +37,6 @@ namespace Razr.Models
         {
             this.Draft = true;
         }
+
     }
 }

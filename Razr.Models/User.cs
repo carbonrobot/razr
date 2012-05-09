@@ -10,7 +10,6 @@ namespace Razr.Models
         public string DisplayName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
 
         public Blog Blog { get; internal set; }
 

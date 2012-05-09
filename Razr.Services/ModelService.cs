@@ -157,14 +157,13 @@ namespace Razr.Services
                     Title = title
                 };
 
-                var salt = DevOne.Security.Cryptography.BCrypt.BCryptHelper.GenerateSalt(12);
+                var salt = DevOne.Security.Cryptography.BCrypt.BCryptHelper.GenerateSalt();
                 var hash = DevOne.Security.Cryptography.BCrypt.BCryptHelper.HashPassword(password, salt);
                 var user = new User()
                 {
                     DisplayName = name,
                     Email = email,
-                    PasswordHash = hash,
-                    PasswordSalt = salt
+                    PasswordHash = hash
                 };
                 blog.AddUser(user);
 
@@ -191,6 +190,12 @@ namespace Razr.Services
             return this.Execute(func);
         }
 
+        /// <summary>
+        /// Validate the email address and password
+        /// </summary>
+        /// <param name="email">The users email address</param>
+        /// <param name="password">The users password</param>
+        /// <returns></returns>
         public ServiceResponse<User> Login(string email, string password)
         {
             Func<User> func = delegate
@@ -203,8 +208,8 @@ namespace Razr.Services
                 if (user == null)
                     throw new ArgumentException("Email address not found");
 
-                var hash = DevOne.Security.Cryptography.BCrypt.BCryptHelper.HashPassword(password, user.PasswordSalt);
-                if (hash == user.PasswordHash)
+                var valid = DevOne.Security.Cryptography.BCrypt.BCryptHelper.CheckPassword(password, user.PasswordHash);
+                if (valid)
                 {
                     return user;
                 }

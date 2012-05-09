@@ -26,7 +26,7 @@ namespace Razr.Web.Controllers
                 throw new Exception("No idea what happened");
 
             var blogs = response.Result;
-            if (blogs.Count > 1)
+            if (blogs.Count > 0)
             {
                 ViewBag.SiteName = blogs[0].SiteName;
                 ViewBag.SiteTitle = blogs[0].Title;
