@@ -46,8 +46,12 @@ namespace Razr.Web
             // unity
             Bootstrapper.Initialise();
 
-            // production
+#if DEBUG
             System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(new Razr.Repository.RazrInitializer());
+#else
+            System.Data.Entity.Database.SetInitializer<Razr.Repository.DataContext>(null);
+#endif 
+
         }
     }
 }

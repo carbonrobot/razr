@@ -18,7 +18,7 @@ namespace Razr.Web.Controllers
             return View(entity);
         }
 
-        [HttpGet] // post/{id}/edit
+        [HttpGet, Authorize] // post/{id}/edit
         public ActionResult Edit(int id)
         {
             var response = service.Get<Post>(id);
@@ -29,7 +29,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        [HttpPost] // post/{id}/edit
+        [HttpPost, Authorize] // post/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
             var entity = service.Get<Post>(model.Post.Id).Result;
@@ -39,14 +39,14 @@ namespace Razr.Web.Controllers
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/quick/{title}
+        [HttpPost, Authorize] // post/quick/{title}
         public ActionResult Quick(string title)
         {
             var response = service.CreateQuickDraft(title);
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/{id}/delete
+        [HttpPost, Authorize] // post/{id}/delete
         public ActionResult Delete(int id)
         {
             var response = service.Delete<Post>(id);

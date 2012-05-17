@@ -14,7 +14,7 @@ namespace Razr.Web.Controllers
     {
 
         [HttpGet]
-        public ActionResult LogOn()
+        public ActionResult Login()
         {
             // check for existing users, if none exist, assume first setup
             var response = service.Count<User>();
@@ -28,7 +28,7 @@ namespace Razr.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult Login(LogOnModel model, string returnUrl)
         {
             var response = service.Login(model.UserName, model.Password);
             if (response.HasError)

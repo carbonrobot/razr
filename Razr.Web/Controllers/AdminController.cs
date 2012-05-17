@@ -30,6 +30,13 @@ namespace Razr.Web.Controllers
         [HttpGet]
         public ActionResult Config()
         {
+            var response = service.List<User>();
+            var users = response.Result;
+            if (users.Count > 0)
+            {
+                return this.Redirect("/login");
+            }
+
             return View();
         }
 
