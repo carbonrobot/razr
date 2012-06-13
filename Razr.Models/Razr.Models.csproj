@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\EmailAttribute.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="Blog.cs" />
     <Compile Include="Post.cs" />

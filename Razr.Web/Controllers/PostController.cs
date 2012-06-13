@@ -53,5 +53,25 @@ namespace Razr.Web.Controllers
             return this.Redirect("/admin");
         }
 
+        [HttpPost, Authorize] // post/{id}/publish
+        public ActionResult Publish(int id)
+        {
+            var response = service.Publish(id);
+            if (response.HasError)
+                this.RedirectToError("Could not publish post", response.Exception);
+
+            return this.RedirectToAction("Edit", new { id = id });
+        }
+
+        [HttpPost, Authorize] // post/{id}/retract
+        public ActionResult Retract(int id)
+        {
+            var response = service.Retract(id);
+            if (response.HasError)
+                this.RedirectToError("Could not retract post", response.Exception);
+
+            return this.RedirectToAction("Edit", new { id = id });
+        }
+
     }
 }
