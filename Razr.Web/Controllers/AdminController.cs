@@ -16,7 +16,7 @@ namespace Razr.Web.Controllers
         {
             ViewBag.Title = "admin | carbonatethis";
 
-            var response = service.List<Post>();
+            var response = Service.List<Post>();
             if (response.HasError)
                 this.RedirectToError("There was a problem looking up posts.", response.Exception);
 
@@ -30,7 +30,7 @@ namespace Razr.Web.Controllers
         [HttpGet]
         public ActionResult Config()
         {
-            var response = service.List<User>();
+            var response = Service.List<User>();
             var users = response.Result;
             if (users.Count > 0)
             {
@@ -44,7 +44,7 @@ namespace Razr.Web.Controllers
         public ActionResult Config(ConfigViewModel model)
         {
             // TODO: all the usual checks
-            var response = service.Configure(model.SiteName, model.SiteTitle, model.DisplayName, model.EmailAddress, model.Password);
+            var response = Service.Configure(model.SiteName, model.SiteTitle, model.DisplayName, model.EmailAddress, model.Password);
 
             // redirect to admin
             return this.Redirect("/admin");

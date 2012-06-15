@@ -11,7 +11,7 @@ namespace Razr.Web.Controllers
 {
     public class BaseController : Controller
     {
-        protected ModelService service
+        protected ModelService Service
         {
             get
             {
@@ -21,7 +21,7 @@ namespace Razr.Web.Controllers
 
         public BaseController()
         {
-            var response = service.List<Blog>();
+            var response = Service.List<Blog>();
             if (response.HasError)
                 throw new Exception("No idea what happened");
 

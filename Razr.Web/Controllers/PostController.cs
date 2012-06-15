@@ -14,14 +14,14 @@ namespace Razr.Web.Controllers
         [HttpGet] // post/{id}
         public ActionResult Index(int id)
         {
-            var entity = service.Get<Post>(id).Result;
+            var entity = Service.Get<Post>(id).Result;
             return View(entity);
         }
 
         [HttpGet, Authorize] // post/{id}/edit
         public ActionResult Edit(int id)
         {
-            var response = service.Get<Post>(id);
+            var response = Service.Get<Post>(id);
             var model = new EditViewModel()
             {
                 Post = response.Result
@@ -32,9 +32,9 @@ namespace Razr.Web.Controllers
         [HttpPost, Authorize] // post/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
-            var entity = service.Get<Post>(model.Post.Id).Result;
+            var entity = Service.Get<Post>(model.Post.Id).Result;
             this.UpdateModel(entity, "Post");
-            var response = service.Save(entity);
+            var response = Service.Save(entity);
 
             return this.Redirect("/admin");
         }
@@ -42,21 +42,21 @@ namespace Razr.Web.Controllers
         [HttpPost, Authorize] // post/quick/{title}
         public ActionResult Quick(string title)
         {
-            var response = service.CreateQuickDraft(title);
+            var response = Service.CreateQuickDraft(title);
             return this.Redirect("/admin");
         }
 
         [HttpPost, Authorize] // post/{id}/delete
         public ActionResult Delete(int id)
         {
-            var response = service.Delete<Post>(id);
+            var response = Service.Delete<Post>(id);
             return this.Redirect("/admin");
         }
 
         [HttpPost, Authorize] // post/{id}/publish
         public ActionResult Publish(int id)
         {
-            var response = service.Publish(id);
+            var response = Service.Publish(id);
             if (response.HasError)
                 this.RedirectToError("Could not publish post", response.Exception);
 
@@ -66,7 +66,7 @@ namespace Razr.Web.Controllers
         [HttpPost, Authorize] // post/{id}/retract
         public ActionResult Retract(int id)
         {
-            var response = service.Retract(id);
+            var response = Service.Retract(id);
             if (response.HasError)
                 this.RedirectToError("Could not retract post", response.Exception);
 

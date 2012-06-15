@@ -17,7 +17,7 @@ namespace Razr.Web.Controllers
         public ActionResult Login()
         {
             // check for existing users, if none exist, assume first setup
-            var response = service.Count<User>();
+            var response = Service.Count<User>();
             if (response.HasError)
                 return this.RedirectToError("Could not check for user accounts", response.Exception);
 
@@ -30,7 +30,7 @@ namespace Razr.Web.Controllers
         [HttpPost]
         public ActionResult Login(LogOnModel model, string returnUrl)
         {
-            var response = service.Login(model.UserName, model.Password);
+            var response = Service.Login(model.UserName, model.Password);
             if (response.HasError)
                 this.RedirectToError("Problem logging in", response.Exception);
 
