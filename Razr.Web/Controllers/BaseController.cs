@@ -22,17 +22,6 @@ namespace Razr.Web.Controllers
         public BaseController()
         {
             var response = service.List<Blog>();
-<<<<<<< HEAD
-            if (response.Result.Count > 0)
-            {
-                var blog = response.Result[0];
-                ViewBag.SiteName = blog.SiteName;
-                ViewBag.SiteTitle = blog.Title;
-            }
-            else
-            {
-                // TODO: can we redirect from here?
-=======
             if (response.HasError)
                 throw new Exception("No idea what happened");
 
@@ -45,7 +34,6 @@ namespace Razr.Web.Controllers
             else
             {
                 this.Redirect("/admin/config");
->>>>>>> 01b6cfec74bd04bda87ac4079359573b7fdf72b2
             }
         }
 
