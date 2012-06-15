@@ -2,7 +2,7 @@
 <article>
     <h2><a href="/post/@Model.Id">@Model.Title</a></h2>
     <div class="subline">
-        <span class="date">@Model.CreatedDate.ToString("MMMM dd, yyyy h:mm tt")</span>
+        <span class="date">@Model.PublishedDate.Value.ToString("MMMM dd, yyyy h:mm tt")</span>
         <span class="tags">@RenderTags(Model.Tags)</span>
     </div>
     @Html.Markdown(Model.Body)

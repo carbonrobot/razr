@@ -19,12 +19,16 @@
             {
             <a class="save-link" href="#" onclick="saveChanges('Draft has been saved.');return false;">Save Draft</a>
             <a class="preview-link" href="#" onclick="preview();return false;">Preview</a>
-            <a class="publish-link" href="#" onclick="publish();return false;">Publish</a>
+            <form action="/post/@Model.Post.Id/publish" method="post">
+                <a class="publish-link" href="#" onclick="$(this).closest('form').submit();return false;">Publish</a>
+            </form>
             }
             else
             {
             <a class="save-link" href="#" onclick="saveChanges('Changes have been saved.');return false;">Save Changes</a>
-            <a class="publish-link" href="#" onclick="publish();return false;">Unpublish</a>
+            <form action="/post/@Model.Post.Id/retract" method="post">
+                <a class="publish-link" href="#" onclick="$(this).closest('form').submit();return false;">Retract</a>
+            </form>
             }
         </div>
     </div>
@@ -33,18 +37,6 @@
     function preview() {
         saveChanges(function () {
             window.open('/post/@Model.Post.Id');
-        });
-    };
-    function publish() {
-        var $draft = $('#Post_Draft');
-        if($draft.val() === 'True'){
-            $draft.val('False');
-        }
-        else{
-            $draft.val('True');
-        }
-        saveChanges(function () {
-            window.location.reload();
         });
     };
     function deletePost() {

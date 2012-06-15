@@ -18,7 +18,7 @@ namespace Razr.Web.Controllers
             return View(entity);
         }
 
-        [HttpGet] // post/{id}/edit
+        [HttpGet, Authorize] // post/{id}/edit
         public ActionResult Edit(int id)
         {
             var response = service.Get<Post>(id);
@@ -29,7 +29,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        [HttpPost] // post/{id}/edit
+        [HttpPost, Authorize] // post/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
             var entity = service.Get<Post>(model.Post.Id).Result;
@@ -39,18 +39,38 @@ namespace Razr.Web.Controllers
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/quick/{title}
+        [HttpPost, Authorize] // post/quick/{title}
         public ActionResult Quick(string title)
         {
             var response = service.CreateQuickDraft(title);
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/{id}/delete
+        [HttpPost, Authorize] // post/{id}/delete
         public ActionResult Delete(int id)
         {
             var response = service.Delete<Post>(id);
             return this.Redirect("/admin");
+        }
+
+        [HttpPost, Authorize] // post/{id}/publish
+        public ActionResult Publish(int id)
+        {
+            var response = service.Publish(id);
+            if (response.HasError)
+                this.RedirectToError("Could not publish post", response.Exception);
+
+            return this.RedirectToAction("Edit", new { id = id });
+        }
+
+        [HttpPost, Authorize] // post/{id}/retract
+        public ActionResult Retract(int id)
+        {
+            var response = service.Retract(id);
+            if (response.HasError)
+                this.RedirectToError("Could not retract post", response.Exception);
+
+            return this.RedirectToAction("Edit", new { id = id });
         }
 
     }

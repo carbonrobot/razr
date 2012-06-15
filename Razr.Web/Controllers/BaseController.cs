@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Razr.Services;
 using Microsoft.Practices.Unity;
+using Razr.Models;
 
 namespace Razr.Web.Controllers
 {
@@ -20,8 +21,32 @@ namespace Razr.Web.Controllers
 
         public BaseController()
         {
-            ViewBag.SiteName = "carbonatethis";
-            ViewBag.SiteTitle = "simple, but effective.";
+            var response = service.List<Blog>();
+<<<<<<< HEAD
+            if (response.Result.Count > 0)
+            {
+                var blog = response.Result[0];
+                ViewBag.SiteName = blog.SiteName;
+                ViewBag.SiteTitle = blog.Title;
+            }
+            else
+            {
+                // TODO: can we redirect from here?
+=======
+            if (response.HasError)
+                throw new Exception("No idea what happened");
+
+            var blogs = response.Result;
+            if (blogs.Count > 0)
+            {
+                ViewBag.SiteName = blogs[0].SiteName;
+                ViewBag.SiteTitle = blogs[0].Title;
+            }
+            else
+            {
+                this.Redirect("/admin/config");
+>>>>>>> 01b6cfec74bd04bda87ac4079359573b7fdf72b2
+            }
         }
 
         /// <summary>
