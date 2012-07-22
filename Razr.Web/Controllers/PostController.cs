@@ -29,7 +29,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        [HttpPost, Authorize] // post/{id}/edit
+        [HttpPost, Authorize, ValidateInput(false)] // post/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
             var entity = Service.Get<Post>(model.Post.Id).Result;

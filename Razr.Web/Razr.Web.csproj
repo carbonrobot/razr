@@ -34,9 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dotless.Core, Version=1.3.0.3, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+    <Reference Include="ColorCode">
+      <HintPath>..\packages\ColorCode.1.0.1\lib\ColorCode.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.3.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\dotless.1.3.0.3\lib\dotless.Core.dll</HintPath>
+      <HintPath>..\packages\dotless.1.3.0.5\lib\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,18 +98,16 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Unity.Mvc3">
-      <HintPath>..\packages\Unity.Mvc3.1.1\lib\Unity.Mvc3.dll</HintPath>
+    <Reference Include="Unity.Mvc3, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Components\Markdown\CoreExtensions.cs" />
-    <Compile Include="Components\Markdown\Document.cs" />
-    <Compile Include="Components\Markdown\IContentProvider.cs" />
-    <Compile Include="Components\Markdown\IMarkdownService.cs" />
     <Compile Include="Components\Markdown\ITranformers.cs" />
-    <Compile Include="Components\Markdown\MarkdownService.cs" />
+    <Compile Include="Components\Markdown\RazrMarkdown.cs" />
     <Compile Include="Components\Markdown\Tranformers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -245,6 +246,7 @@
     <Content Include="Scripts\syntax\shBrushXml.js" />
     <Content Include="Scripts\syntax\shCore.js" />
     <Content Include="Scripts\syntax\shLegacy.js" />
+    <Content Include="Unity.Mvc3.README.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

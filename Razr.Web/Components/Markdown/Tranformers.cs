@@ -102,20 +102,15 @@ namespace Razr.Web.Components.Markdown
 		public virtual IEnumerable<Func<string, string>> GetTransformers()
 		{
 			yield return LineBreaks;
-
 			yield return CSharp;
-
 			yield return JavaScript;
-
 			yield return Html;
-
 			yield return Css;
-
 			yield return Xml;
-
 			yield return GenericCodeBlock;
-
 			yield return HtmlEncoding;
 		}
+
+        
 	}
 }

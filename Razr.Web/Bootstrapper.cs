@@ -22,8 +22,6 @@ namespace Razr.Web
             container.RegisterType<Razr.Services.ILogger, Razr.Web.Util.Logger>(new PerRequestLifetimeManager());
             container.RegisterType<Razr.Services.ModelService>(new PerRequestLifetimeManager());
             
-            container.RegisterControllers();
-
             return container;
         }
     }
