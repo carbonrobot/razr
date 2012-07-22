@@ -101,6 +101,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Components\Markdown\CoreExtensions.cs" />
+    <Compile Include="Components\Markdown\Document.cs" />
+    <Compile Include="Components\Markdown\IContentProvider.cs" />
+    <Compile Include="Components\Markdown\IMarkdownService.cs" />
+    <Compile Include="Components\Markdown\ITranformers.cs" />
+    <Compile Include="Components\Markdown\MarkdownService.cs" />
+    <Compile Include="Components\Markdown\Tranformers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
