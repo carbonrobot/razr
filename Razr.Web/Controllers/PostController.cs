@@ -11,7 +11,7 @@ namespace Razr.Web.Controllers
     public class PostController : BaseController
     {
 
-        [HttpGet] // post/{id}
+        [HttpGet] // public/{id}
         public ActionResult Index(int id)
         {
             var entity = Service.Get<Post>(id).Result;
