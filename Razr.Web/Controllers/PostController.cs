@@ -8,17 +8,11 @@ using Razr.Web.Models;
 
 namespace Razr.Web.Controllers
 {
+    [Authorize]
     public class PostController : BaseController
     {
 
-        [HttpGet] // public/{id}
-        public ActionResult Index(int id)
-        {
-            var entity = Service.Get<Post>(id).Result;
-            return View(entity);
-        }
-
-        [HttpGet, Authorize] // post/{id}/edit
+        [HttpGet] // post/{id}/edit
         public ActionResult Edit(int id)
         {
             var response = Service.Get<Post>(id);
@@ -29,7 +23,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        [HttpPost, Authorize, ValidateInput(false)] // post/{id}/edit
+        [HttpPost, ValidateInput(false)] // post/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
             var entity = Service.Get<Post>(model.Post.Id).Result;
@@ -39,21 +33,21 @@ namespace Razr.Web.Controllers
             return this.Redirect("/admin");
         }
 
-        [HttpPost, Authorize] // post/quick/{title}
+        [HttpPost] // post/quick/{title}
         public ActionResult Quick(string title)
         {
             var response = Service.CreateQuickDraft(title);
             return this.Redirect("/admin");
         }
 
-        [HttpPost, Authorize] // post/{id}/delete
+        [HttpPost] // post/{id}/delete
         public ActionResult Delete(int id)
         {
             var response = Service.Delete<Post>(id);
             return this.Redirect("/admin");
         }
 
-        [HttpPost, Authorize] // post/{id}/publish
+        [HttpPost] // post/{id}/publish
         public ActionResult Publish(int id)
         {
             var response = Service.Publish(id);
@@ -63,7 +57,7 @@ namespace Razr.Web.Controllers
             return this.RedirectToAction("Edit", new { id = id });
         }
 
-        [HttpPost, Authorize] // post/{id}/retract
+        [HttpPost] // post/{id}/retract
         public ActionResult Retract(int id)
         {
             var response = Service.Retract(id);
