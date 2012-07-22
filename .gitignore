@@ -11,3 +11,5 @@ TestResults
 ################################
 *.suo
 *.user
+Web.Release.config
+Web.Debug.config
