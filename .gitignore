@@ -10,4 +10,5 @@ TestResults
 # user specific solution files #
 ################################
 *.suo
-*.userWeb.config
+*.user
+Web.config
