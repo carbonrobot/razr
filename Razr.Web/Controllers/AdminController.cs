@@ -33,9 +33,7 @@ namespace Razr.Web.Controllers
             var response = Service.List<User>();
             var users = response.Result;
             if (users.Count > 0)
-            {
-                return this.Redirect("/login");
-            }
+                return this.RedirectToAction("Login", "Public");
 
             return View();
         }
@@ -47,7 +45,7 @@ namespace Razr.Web.Controllers
             var response = Service.Configure(model.SiteName, model.SiteTitle, model.DisplayName, model.EmailAddress, model.Password);
 
             // redirect to admin
-            return this.Redirect("/admin");
+            return this.RedirectToAction("Index");
         }
         
     }

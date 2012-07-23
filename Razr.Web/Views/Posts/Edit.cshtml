@@ -1,6 +1,6 @@
 ﻿@model Razr.Web.Models.EditViewModel
 <div id="editor">
-    <form action="/post/@Model.Post.Id/edit" method="post" id="editForm">
+    <form action="/posts/@Model.Post.Id/edit" method="post" id="editForm">
     @Html.HiddenFor(x => x.Post.Id)
     @Html.HiddenFor(x => x.Post.Draft)
     @Html.TextBoxFor(x => x.Post.Title, new { placeholder = "Start typing a new idea here..." })
@@ -19,14 +19,14 @@
             {
             <a class="save-link" href="#" onclick="saveChanges('Draft has been saved.');return false;">Save Draft</a>
             <a class="preview-link" href="#" onclick="preview();return false;">Preview</a>
-            <form action="/post/@Model.Post.Id/publish" method="post">
+            <form action="/posts/@Model.Post.Id/publish" method="post">
                 <a class="publish-link" href="#" onclick="$(this).closest('form').submit();return false;">Publish</a>
             </form>
             }
             else
             {
             <a class="save-link" href="#" onclick="saveChanges('Changes have been saved.');return false;">Save Changes</a>
-            <form action="/post/@Model.Post.Id/retract" method="post">
+            <form action="/posts/@Model.Post.Id/retract" method="post">
                 <a class="publish-link" href="#" onclick="$(this).closest('form').submit();return false;">Retract</a>
             </form>
             }
@@ -36,17 +36,17 @@
 <script type="text/javascript">
     function preview() {
         saveChanges(function () {
-            window.open('/post/@Model.Post.Id');
+            window.open('/posts/@Model.Post.Id');
         });
     };
     function deletePost() {
-        $.post('/post/@Model.Post.Id/delete', function () {
+        $.post('/posts/@Model.Post.Id/delete', function () {
             window.location = '/admin';
         });
     };
     function saveChanges(callback) {
         $form = $('#editForm');
-        $.post('/post/@Model.Post.Id/edit', $form.serialize(), function () {
+        $.post('/posts/@Model.Post.Id/edit', $form.serialize(), function () {
             if (typeof callback === 'function')
                 callback();
             else if (typeof callback === 'string')

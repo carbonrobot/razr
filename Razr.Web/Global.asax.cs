@@ -7,8 +7,6 @@ using System.Web.Routing;
 
 namespace Razr.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -21,17 +19,27 @@ namespace Razr.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // ex: /archive/the-post-title
             routes.MapRoute(
-                "Operation",
+                "Archive",
+                "archive/{slug}",
+                new { Controller = "Public", Action = "Slug" }
+            );
+            
+            // ex: /posts/1/edit
+            routes.MapRoute(
+                "Action",
                 "{controller}/{id}/{action}",
-                new { controller = "Post", action = "Index" },
+                null,
                 new { id = @"\d+" }
             );
             
+            // ex: /login
+            // ex: /admin/config
             routes.MapRoute(
-                "Action", 
-                "{controller}/{action}", 
-                new { controller = "Home", action = "Index" }
+                "Default",
+                "{controller}/{action}",
+                new { Controller = "Public", Action = "Index" }
             );
 
         }

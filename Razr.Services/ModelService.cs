@@ -125,6 +125,25 @@
         }
 
         /// <summary>
+        /// Returns a post by slug name
+        /// </summary>
+        /// <param name="slug">The seo friendly title of a post</param>
+        /// <returns></returns>
+        public ServiceResponse<Post> GetPost(string slug)
+        {
+            Func<Post> func = delegate
+            {
+                slug = slug.ToLower();
+                var entity = context.AsQueryable<Post>().FirstOrDefault(x => x.Slug == slug);
+                if (entity == null)
+                    throw new ArgumentOutOfRangeException("No post was found with an title of " + slug);
+
+                return entity;
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
         /// Publishes the selected post
         /// </summary>
         /// <param name="postId">The id of the post to publish</param>

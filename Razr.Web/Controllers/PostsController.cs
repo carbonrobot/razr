@@ -9,10 +9,18 @@ using Razr.Web.Models;
 namespace Razr.Web.Controllers
 {
     [Authorize]
-    public class PostController : BaseController
+    public class PostsController : BaseController
     {
 
-        [HttpGet] // post/{id}/edit
+        [HttpGet] // GET: /posts/{id}
+        public ActionResult Index(int id)
+        {
+            var response = Service.Get<Post>(id);
+            var post = response.Result;
+            return View(post);
+        }
+        
+        [HttpGet] // GET: /posts/{id}/edit
         public ActionResult Edit(int id)
         {
             var response = Service.Get<Post>(id);
@@ -23,7 +31,7 @@ namespace Razr.Web.Controllers
             return View(model);
         }
 
-        [HttpPost, ValidateInput(false)] // post/{id}/edit
+        [HttpPost, ValidateInput(false)] // POST: /posts/{id}/edit
         public ActionResult Edit(EditViewModel model)
         {
             var entity = Service.Get<Post>(model.Post.Id).Result;
@@ -33,21 +41,21 @@ namespace Razr.Web.Controllers
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/quick/{title}
+        [HttpPost] // POST: /posts/quick/{title}
         public ActionResult Quick(string title)
         {
             var response = Service.CreateQuickDraft(title);
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/{id}/delete
+        [HttpPost] // posts/{id}/delete
         public ActionResult Delete(int id)
         {
             var response = Service.Delete<Post>(id);
             return this.Redirect("/admin");
         }
 
-        [HttpPost] // post/{id}/publish
+        [HttpPost] // posts/{id}/publish
         public ActionResult Publish(int id)
         {
             var response = Service.Publish(id);
@@ -57,7 +65,7 @@ namespace Razr.Web.Controllers
             return this.RedirectToAction("Edit", new { id = id });
         }
 
-        [HttpPost] // post/{id}/retract
+        [HttpPost] // posts/{id}/retract
         public ActionResult Retract(int id)
         {
             var response = Service.Retract(id);

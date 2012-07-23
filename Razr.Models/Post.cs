@@ -41,12 +41,18 @@
         public string Title { get; set; }
 
         /// <summary>
+        /// Gets or sets the slug of the post
+        /// </summary>
+        public string Slug { get; set; }
+
+        /// <summary>
         /// Publish this post
         /// </summary>
         public void Publish()
         {
             this.Draft = false;
             this.PublishedDate = DateTime.Now;
+            this.Slug = this.createSlug();
         }
 
         /// <summary>
@@ -57,5 +63,28 @@
             this.Draft = true;
             this.PublishedDate = null;
         }
+
+        /// <summary>
+        /// Create a slug from the title of the post
+        /// </summary>
+        private string createSlug()
+        {
+            // http://stackoverflow.com/a/2921135/118224
+            
+            // lowercase only
+            var slug = this.Title.ToLower();
+            
+            // invalid chars           
+            slug = System.Text.RegularExpressions.Regex.Replace(slug, @"[^a-z0-9\s-]", "");
+            
+            // convert multiple spaces into one space   
+            slug = System.Text.RegularExpressions.Regex.Replace(slug, @"\s+", " ").Trim();
+            
+            // cut and trim 
+            slug = slug.Substring(0, slug.Length <= 45 ? slug.Length : 45).Trim();
+            slug = System.Text.RegularExpressions.Regex.Replace(slug, @"\s", "-"); // hyphens   
+            return slug; 
+        }
+
     }
 }

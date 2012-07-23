@@ -24,15 +24,15 @@ namespace Razr.Web.Controllers
             };
             return View(model);
         }
-        
-        [HttpGet] // GET: /{year}/{month}/{day}/{slug}
-        public ActionResult Slug(int year, int month, int day, string slug)
+
+        [HttpGet] // GET: /archive/{slug}
+        public ActionResult Slug(string slug)
         {
-            //var entity = Service.Get<Post>(id).Result;
-            return View();
+            var response = Service.GetPost(slug);
+            var post = response.Result;
+            return View("../Posts/Index", post);
         }
-
-
+        
         [HttpGet] // GET: /public/about
         public ActionResult About()
         {

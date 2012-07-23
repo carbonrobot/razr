@@ -1,6 +1,6 @@
 ﻿@model Razr.Models.Post
 <article>
-    <h2><a href="/post/@Model.Id">@Model.Title</a></h2>
+    <h2><a href="/archive/@Model.Slug">@Model.Title</a></h2>
     <div class="subline">
         <span class="date">@Model.PublishedDate.Value.ToString("MMMM dd, yyyy h:mm tt")</span>
         <span class="tags">@RenderTags(Model.Tags)</span>
@@ -13,7 +13,7 @@
     {
         foreach (var tag in tags.Split(','))
         {
-            <a class="label" href="?tag=@tag.Trim()">@tag.Trim()</a>
+            <a class="label" href="/?tag=@tag.Trim()">@tag.Trim()</a>
         }
     }
 }

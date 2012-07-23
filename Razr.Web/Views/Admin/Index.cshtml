@@ -3,17 +3,17 @@
     <div class="row">
         <div id="admin">
             <div id="drafts" class="col">
-                <h1>DRAFTS <a href="/" class="button">NEW DRAFT</a> </h1>
-                <form action="/post/quick" method="post">
+                <h1>DRAFTS</h1>
+                <form action="/posts/quick" method="post">
                 <input type="text" id="title" name="title" placeholder="Start typing a new idea here..." />
                 </form>
                 <ul class="unstyled">
                     @foreach (var post in Model.Drafts)
                     {
                         <li id="post-@post.Id">
-                            <h3><a href="/post/@post.Id/edit">@post.Title</a>
+                            <h3><a href="/posts/@post.Id/edit">@post.Title</a>
                                 <span class="links"> 
-                                <a href="/post/@post.Id" class="admin-view">view</a> 
+                                <a href="/posts/@post.Id" class="admin-view">view</a> 
                                 <a href="#" class="admin-delete" onclick="deletePost(@post.Id);return false;">x</a>
                                 </span>
                             </h3>
@@ -27,9 +27,9 @@
                     @foreach (var post in Model.Published)
                     {
                         <li id="post-@post.Id">
-                            <h3><a href="/post/@post.Id/edit">@post.Title</a>
+                            <h3><a href="/posts/@post.Id/edit">@post.Title</a>
                                 <span class="links"> 
-                                <a href="/post/@post.Id" class="admin-view">view</a> 
+                                <a href="/posts/@post.Id" class="admin-view">view</a> 
                                 <a href="#" class="admin-delete" onclick="deletePost(@post.Id);return false;">x</a>
                                 </span>
                             </h3>
@@ -47,7 +47,7 @@
     });
 
     function deletePost(id) {
-        $.post('/post/' + id + '/delete', function () {
+        $.post('/posts/' + id + '/delete', function () {
             $('#post-' + id).fadeOut();
         });
     };
