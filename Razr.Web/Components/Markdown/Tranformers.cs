@@ -15,25 +15,20 @@ namespace Razr.Web.Components.Markdown
 
 		private Regex _cSharpCodeBlocksRegExPreTrans;
 		private Regex _jsCodeBlocksRegExPreTrans;
+        private Regex _phpCodeBlocksRegExPreTrans;
 		private Regex _htmlCodeBlocksRegExPreTrans;
 		private Regex _cssCodeBlocksRegExPreTrans;
 		private Regex _xmlCodeBlocksRegExPreTrans;
 		private Regex _genericCodeBlocksRegExPreTrans;
 
 		public Func<string, string> LineBreaks { get; set; }
-
 		public Func<string, string> HtmlEncoding { get; set; }
-
 		public Func<string, string> GenericCodeBlock { get; set; }
-
 		public Func<string, string> CSharp { get; set; }
-
+        public Func<string, string> Php { get; set; }
 		public Func<string, string> JavaScript { get; set; }
-
 		public Func<string, string> Html { get; set; }
-
 		public Func<string, string> Css { get; set; }
-
 		public Func<string, string> Xml { get; set; }
 
 		public Tranformers()
@@ -53,8 +48,12 @@ namespace Razr.Web.Components.Markdown
 		{
 			const string format = @"^{0}([\s]*){1}(.*?){0}";
 
+            var k = new Dictionary<string, ColorCode.ILanguage>();
+            k.Add("(c#|csharp){1}", Languages.CSharp);
+
 			_cSharpCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "(c#|csharp){1}"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			_jsCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "(js|javascript){1}"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            _phpCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "php"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            _jsCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "(js|javascript){1}"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_htmlCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "html"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_cssCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "css"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_xmlCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "xml"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
@@ -64,19 +63,14 @@ namespace Razr.Web.Components.Markdown
 		protected virtual void OnInitializeTranformerFuncs()
 		{
 			LineBreaks = mc => mc.Replace("\r\n", "\n");
-
 			HtmlEncoding = mc => mc.Replace(@"\<", "&lt;").Replace(@"\>", "&gt;");
 
 			CSharp = mc => _cSharpCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.CSharp));
-
+            Php = mc => _phpCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.Php));
 			JavaScript = mc => _jsCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.JavaScript));
-
 			Html = mc => _htmlCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.Html));
-
 			Css = mc => _cssCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.Css));
-
 			Xml = mc => _xmlCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.Xml));
-
 			GenericCodeBlock = mc => _genericCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value));
 		}
 
@@ -103,6 +97,7 @@ namespace Razr.Web.Components.Markdown
 		{
 			yield return LineBreaks;
 			yield return CSharp;
+            yield return Php;
 			yield return JavaScript;
 			yield return Html;
 			yield return Css;
