@@ -106,9 +106,8 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Components\Markdown\CoreExtensions.cs" />
-    <Compile Include="Components\Markdown\ITranformers.cs" />
+    <Compile Include="Components\Markdown\Transformer.cs" />
     <Compile Include="Components\Markdown\RazrMarkdown.cs" />
-    <Compile Include="Components\Markdown\Tranformers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />

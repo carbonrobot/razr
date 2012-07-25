@@ -48,7 +48,7 @@ namespace Razr.Web.Controllers
                 return this.RedirectToError("Could not check for user accounts", response.Exception);
 
             if (response.Result < 1)
-                return this.RedirectToRoute("/admin/config");
+                return this.RedirectToAction("Config", "Admin");
 
             return View();
         }
