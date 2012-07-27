@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ColorCode;
 using System.Text.RegularExpressions;
 
 namespace Razr.Web.Components.Markdown
 {
-
+    /*
     public class Transformer
     {
         public const string CodeBlockFormat = @"^{0}([\s]?){1}([^`]+){0}";
@@ -75,7 +74,6 @@ namespace Razr.Web.Components.Markdown
             list.Add(new Transformer("xml", Languages.Xml));
             return list;
         }
-
         
-    }
+    }*/
 }
