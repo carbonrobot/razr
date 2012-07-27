@@ -206,6 +206,26 @@
     <Content Include="Content\css\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\images\icon.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\google-code-prettify\lang-apollo.js" />
+    <Content Include="Scripts\google-code-prettify\lang-clj.js" />
+    <Content Include="Scripts\google-code-prettify\lang-css.js" />
+    <Content Include="Scripts\google-code-prettify\lang-go.js" />
+    <Content Include="Scripts\google-code-prettify\lang-hs.js" />
+    <Content Include="Scripts\google-code-prettify\lang-lisp.js" />
+    <Content Include="Scripts\google-code-prettify\lang-lua.js" />
+    <Content Include="Scripts\google-code-prettify\lang-ml.js" />
+    <Content Include="Scripts\google-code-prettify\lang-n.js" />
+    <Content Include="Scripts\google-code-prettify\lang-proto.js" />
+    <Content Include="Scripts\google-code-prettify\lang-scala.js" />
+    <Content Include="Scripts\google-code-prettify\lang-sql.js" />
+    <Content Include="Scripts\google-code-prettify\lang-tex.js" />
+    <Content Include="Scripts\google-code-prettify\lang-vb.js" />
+    <Content Include="Scripts\google-code-prettify\lang-vhdl.js" />
+    <Content Include="Scripts\google-code-prettify\lang-wiki.js" />
+    <Content Include="Scripts\google-code-prettify\lang-xq.js" />
+    <Content Include="Scripts\google-code-prettify\lang-yaml.js" />
+    <Content Include="Scripts\google-code-prettify\prettify.css" />
+    <Content Include="Scripts\google-code-prettify\prettify.js" />
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
@@ -215,34 +235,7 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\syntax\shAutoloader.js" />
-    <Content Include="Scripts\syntax\shBrushAppleScript.js" />
-    <Content Include="Scripts\syntax\shBrushAS3.js" />
-    <Content Include="Scripts\syntax\shBrushBash.js" />
-    <Content Include="Scripts\syntax\shBrushColdFusion.js" />
-    <Content Include="Scripts\syntax\shBrushCpp.js" />
-    <Content Include="Scripts\syntax\shBrushCSharp.js" />
-    <Content Include="Scripts\syntax\shBrushCss.js" />
-    <Content Include="Scripts\syntax\shBrushDelphi.js" />
-    <Content Include="Scripts\syntax\shBrushDiff.js" />
-    <Content Include="Scripts\syntax\shBrushErlang.js" />
-    <Content Include="Scripts\syntax\shBrushGroovy.js" />
-    <Content Include="Scripts\syntax\shBrushJava.js" />
-    <Content Include="Scripts\syntax\shBrushJavaFX.js" />
-    <Content Include="Scripts\syntax\shBrushJScript.js" />
-    <Content Include="Scripts\syntax\shBrushPerl.js" />
-    <Content Include="Scripts\syntax\shBrushPhp.js" />
-    <Content Include="Scripts\syntax\shBrushPlain.js" />
-    <Content Include="Scripts\syntax\shBrushPowerShell.js" />
-    <Content Include="Scripts\syntax\shBrushPython.js" />
-    <Content Include="Scripts\syntax\shBrushRuby.js" />
-    <Content Include="Scripts\syntax\shBrushSass.js" />
-    <Content Include="Scripts\syntax\shBrushScala.js" />
-    <Content Include="Scripts\syntax\shBrushSql.js" />
-    <Content Include="Scripts\syntax\shBrushVb.js" />
-    <Content Include="Scripts\syntax\shBrushXml.js" />
-    <Content Include="Scripts\syntax\shCore.js" />
-    <Content Include="Scripts\syntax\shLegacy.js" />
+    <Content Include="Scripts\razr\autoloader.js" />
     <Content Include="Unity.Mvc3.README.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -300,7 +293,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\razr\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
